@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div>
+            <label>Name your server : 
+            </label><input [(ngModel)] = "namedServer">
+             From Component - {{namedServer}}
+         </div>
+         New ServerAdded - {{serverAddedName}}
+         <ul>
+            <li *ngFor="let server of serverAddedName; let serverIndex = index">
+              <p 
+              [ngClass]="{onlineServer : isServerOnline(server.serverStatus)}"
+              [ngStyle]="{backgroundColor:getColor(server.serverStatus)}">
+              Server Number {{serverIndex+1}} : {{ server.serverName }} is {{server.serverStatus}}
+            </p>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <p>Is allowed to add server? = {{allowServerCreation}}</p>
+        <button class="btn btn-danger" [disabled]="!allowServer()" (click)="updateServerName()">Add new Server</button>
+      </div>
+    </div>
+</div>
